@@ -5,12 +5,13 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
 		xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
         xmlns:models ="clr-namespace:Models;assembly=Models"
+        xmlns:views ="clr-namespace:StudentsManager.Views"
         xmlns:viewModels ="clr-namespace:StudentsManager.ViewModels;assembly=ViewModels"
         xmlns:mvvmFramework ="clr-namespace:MvvmFramework;assembly=MvvmFramework"
-        mvvmFramework:AutoViewModelLocator.AutoAttachViewModel="True"
-        xmlns:designTimeViewModel ="clr-namespace:StudentsManager.Views.DesignTime"
-        d:DataContext="{d:DesignInstance Type=designTimeViewModel:MainDesignTimeViewModel, IsDesignTimeCreatable=True}"
-		mc:Ignorable="d" 
+        d:DataContext="{Binding Source={d:DesignInstance viewModels:MainViewModel}, 
+        Converter={x:Static views:DesignTimeViewModelLocator.Instance}}"
+        DataContext="{Binding MainViewModel, Source={StaticResource Locator}}"
+       mc:Ignorable="d" 
         Title="MainWindow" Height="380" Width="525">
     
 	<Window.Resources>

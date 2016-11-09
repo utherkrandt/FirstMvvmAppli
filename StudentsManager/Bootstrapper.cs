@@ -25,9 +25,7 @@ namespace StudentsManager.Views
             _container = new WindsorContainer();
             _container.Register(
                 Component.For<IDataProvider<Student>>()
-                    .ImplementedBy<StudentsXmlProvider>()
-                    .DependsOn(Dependency.OnValue<string>("StudentsRepo.xml")));
-
+                .ImplementedBy<DesignTime.DesignTimeStudentsProvider>());
             RegisterViewModel();
             _container.AddFacility<TypedFactoryFacility>();
         }
@@ -35,6 +33,11 @@ namespace StudentsManager.Views
         protected override void ConfigureForRuntime()
         {
             _container = new WindsorContainer();
+            _container.Register(
+                Component.For<IDataProvider<Student>>()
+                    .ImplementedBy<StudentsXmlProvider>()
+                    .DependsOn(Dependency.OnValue<string>("StudentsRepo.xml")));
+
             RegisterViewModel();
             _container.AddFacility<TypedFactoryFacility>();
         }

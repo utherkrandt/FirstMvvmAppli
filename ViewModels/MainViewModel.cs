@@ -11,15 +11,15 @@ namespace StudentsManager.ViewModels
 
         public ObservableCollection<Student> Students { get; private set; }
 
-        public MainViewModel()
+        public MainViewModel(IDataProvider<Student> provider)
         {
+            studentXmlProvider = provider;
             ReloadStudents();
         }
 
         private void ReloadStudents()
         {
-            studentXmlProvider = new StudentsXmlProvider(Path.Combine(Environment.CurrentDirectory,"StudentsRepo.xml"));
-            var students = studentXmlProvider.GetAll();
+           var students = studentXmlProvider.GetAll();
             Students = new ObservableCollection<Student>(students);
         }
     }

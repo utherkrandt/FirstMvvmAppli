@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="MainViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModelLocator.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">
@@ -51,6 +52,10 @@
     <ProjectReference Include="..\Model\Models.csproj">
       <Project>{9ee87398-e96b-48e0-b793-0316eebdfd36}</Project>
       <Name>Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MvvmFramework\MvvmFramework.csproj">
+      <Project>{4578ee5e-f5fa-4376-96a2-311ad2bbf4c9}</Project>
+      <Name>MvvmFramework</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
